@@ -8,8 +8,8 @@ addons:
 
 before_install:
   # Try https://github.com/travis-ci/travis-ci/issues/8363#issuecomment-327857631
-  # to workaround Travis having broken Python3.5
-  - if [[ $TRAVIS_PYTHON_VERSION = "3.5" ]]; then pyenv global system 3.5; fi
+  # to workaround Travis having broken Python3.5, and flaky 3.4
+  - pyenv global system $TRAVIS_PYTHON_VERSION
 
 before_script:
   # Add an IPv6 config - see the corresponding Travis issue
