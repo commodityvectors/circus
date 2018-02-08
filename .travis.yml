@@ -21,16 +21,16 @@ before_script:
       sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6';
     fi
 
-env:
-  - TOX_ENV=py26
-  - TOX_ENV=py26-no-gevent
-  - TOX_ENV=py27
-  - TOX_ENV=py27-no-gevent
-  - TOX_ENV=py33
-  - TOX_ENV=py34
-  - TOX_ENV=py35
-  - TOX_ENV=docs
-  - TOX_ENV=flake8
+#env:
+#  - TOX_ENV=py26
+#  - TOX_ENV=py26-no-gevent
+#  - TOX_ENV=py27
+#  - TOX_ENV=py27-no-gevent
+#  - TOX_ENV=py33
+#  - TOX_ENV=py34
+#  - TOX_ENV=py35
+#  - TOX_ENV=docs
+#  - TOX_ENV=flake8
 
 script:
     - tox -e $TOX_ENV
@@ -45,19 +45,20 @@ notifications:
 jobs:
   include:
     - python: 3.5
-      env: 
-        - TOX_ENV=py35
-        - TOX_ENV=docs
-        - TOX_ENV=flake8
+      env: TOX_ENV=py35
+    - python: 3.5
+      env: TOX_ENV=docs
+    - python: 3.5
+      env: TOX_ENV=flake8
     - python: 3.4
       env: TOX_ENV=py34
     - python: 3.3
       env: TOX_ENV=py33
     - python: 2.7
-      env:
-        - TOX_ENV=py27
-        - TOX_ENV=py27-no-gevent
+      env: TOX_ENV=py27
+    - python: 2.7
+      env: TOX_ENV=py27-no-gevent
     - python: 2.6
-      env:
-        - TOX_ENV=py26
-        - TOX_ENV=py26-no-gevent
+      env: TOX_ENV=py26
+    - python: 2.6
+      env: TOX_ENV=py26-no-gevent
