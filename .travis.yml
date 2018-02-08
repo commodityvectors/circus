@@ -10,8 +10,8 @@ addons:
 before_install:
   - sudo add-apt-repository -y ppa:deadsnakes/ppa
   - sudo apt-get update
-  - if [[ $TOX_ENV == "py26*" ]]; then sudo apt-get install python2.6; fi
-  - if [[ $TOX_ENV == "py33"  ]]; then sudo apt-get install python3.3; fi
+  - if [ $TOX_ENV = "py26"* ]; then sudo apt-get install python2.6; fi
+  - if [ $TOX_ENV = "py33"  ]; then sudo apt-get install python3.3; fi
 
 before_script:
   # Add an IPv6 config - see the corresponding Travis issue
