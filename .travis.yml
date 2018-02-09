@@ -9,11 +9,13 @@ addons:
 before_install:
   # Try https://github.com/travis-ci/travis-ci/issues/8363#issuecomment-327857631
   # to workaround Travis having broken Python3.5, and flaky 3.4
+  - pyenv global ${TRAVIS_PYTHON_VERSION}
   - >
-    if [[ $TRAVIS_PYTHON_VERSION = "3.5" ]]; then sudo add-apt-repository -y ppa:deadsnakes/ppa; 
+    if [[ $TRAVIS_PYTHON_VERSION = "3.5" ]]; then deactivate; sudo add-apt-repository -y ppa:deadsnakes/ppa; 
     sudo apt-get update; sudo apt-get install -y python3.5 python3.5-dev; 
-    virtualenv --python=/usr/bin/python3.5 ~/working_venv; source ~/working_venv/bin/activate; fi
-  - pyenv global $TRAVIS_PYTHON_VERSION
+    virtualenv --python=/usr/bin/python3.5 ~/working_venv; source ~/working_venv/bin/activate; 
+    python --version; which python; pip --version; fi
+
 
 before_script:
   # Add an IPv6 config - see the corresponding Travis issue
