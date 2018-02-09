@@ -45,7 +45,7 @@ script:
     - cat /home/travis/build/commodityvectors/circus/.tox/log/tox-0.log
     - cat /home/travis/build/commodityvectors/circus/.tox/py35/log/py35-0.log
     - cat /home/travis/build/commodityvectors/circus/.tox/py35/log/py35-3.log
-    - ls ~/virtualenv/
+    - ls -l ~/virtualenv/
 
 install:
     - pip install tox
