@@ -41,6 +41,7 @@ jobs:
       env: TOX_ENV=py26-no-gevent
 
 script:
+    - export NOSE_VERBOSE=3
     - tox -v -e $TOX_ENV
     - cat /home/travis/build/commodityvectors/circus/.tox/log/tox-0.log
     - cat /home/travis/build/commodityvectors/circus/.tox/py35/log/py35-0.log
