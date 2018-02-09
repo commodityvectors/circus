@@ -9,7 +9,10 @@ addons:
 before_install:
   # Try https://github.com/travis-ci/travis-ci/issues/8363#issuecomment-327857631
   # to workaround Travis having broken Python3.5, and flaky 3.4
-  - if [[ $TRAVIS_PYTHON_VERSION = "3.5" ]]; then sudo add-apt-repository -y ppa:deadsnakes/ppa; sudo apt-get update; sudo apt-get install -y python3.5 python3.5-dev; virtualenv --python=/usr/bin/python3.5 ~/working_venv; source ~/working_venv/bin/activate; fi
+  - >
+    if [[ $TRAVIS_PYTHON_VERSION = "3.5" ]]; then sudo add-apt-repository -y ppa:deadsnakes/ppa; 
+    sudo apt-get update; sudo apt-get install -y python3.5 python3.5-dev; 
+    virtualenv --python=/usr/bin/python3.5 ~/working_venv; source ~/working_venv/bin/activate; fi
   - pyenv global $TRAVIS_PYTHON_VERSION
 
 before_script:
@@ -44,8 +47,7 @@ jobs:
       env: TOX_ENV=py26-no-gevent
 
 script:
-    - export NOSE_VERBOSE=3
-    - tox -v -e $TOX_ENV
+    - tox -e $TOX_ENV
 
 install:
     - pip install tox
