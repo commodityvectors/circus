@@ -49,7 +49,7 @@ jobs:
       env: TOX_ENV=py26-no-gevent
 
 script:
-    - tox -e $TOX_ENV
+    - tox -v -e $TOX_ENV
 
 install:
     - pip install tox
