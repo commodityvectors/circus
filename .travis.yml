@@ -9,7 +9,7 @@ addons:
 before_install:
   # Try https://github.com/travis-ci/travis-ci/issues/8363#issuecomment-327857631
   # to workaround Travis having broken Python3.5, and flaky 3.4
-  - pyenv global system $TRAVIS_PYTHON_VERSION
+  - pyenv global $TRAVIS_PYTHON_VERSION
 
 before_script:
   # Add an IPv6 config - see the corresponding Travis issue
@@ -43,9 +43,6 @@ jobs:
 script:
     - export NOSE_VERBOSE=3
     - tox -v -e $TOX_ENV
-    - cat /home/travis/build/commodityvectors/circus/.tox/log/*.log
-    - cat /home/travis/build/commodityvectors/circus/.tox/py35/log/*.log
-    - ls -l ~/virtualenv/
 
 install:
     - pip install tox
