@@ -1,4 +1,4 @@
-.. _circushttpd:
+.. _cvec_circushttpd:
 
 The Web Console
 ###############
@@ -18,18 +18,18 @@ The Web Console lets you:
    If you want to activate it, make sure the Circus system you'll
    connect to has the stats enpoint enabled in its configuration::
 
-     [circus]
+     [cvec_circus]
      statsd = True
 
    By default, this option is not activated.
 
 The web console is its own package, you need to install::
 
-    $ pip install circus-web
+    $ pip install cvec_circus-web
 
 To enable the console, add a few options in the Circus ini file::
 
-    [circus]
+    [cvec_circus]
     httpd = True
     httpd_host = localhost
     httpd_port = 8080
@@ -37,9 +37,9 @@ To enable the console, add a few options in the Circus ini file::
 
 *httpd_host* and *httpd_port* are optional, and default to *localhost* and *8080*.
 
-If you want to run the web app on its own, just run the **circushttpd** script::
+If you want to run the web app on its own, just run the **cvec_circushttpd** script::
 
-    $ circushttpd
+    $ cvec_circushttpd
     Bottle server starting up...
     Listening on http://localhost:8080/
     Hit Ctrl-C to quit.
@@ -64,7 +64,7 @@ By default the endpoint is *tcp://127.0.0.1:5555*.
 Once you hit *Connect*, the web application will connect to the Circus system.
 
 With the Web Console logged in, you should get a list of watchers, and a real-time
-status of the two Circus processes (circusd and circusd-stats).
+status of the two Circus processes (cvec_circusd and cvec_circusd-stats).
 
 .. image:: web-index.png
    :align: center
@@ -94,9 +94,9 @@ in the left menu:
 Running behind Nginx
 ====================
 
-Nginx can act as a proxy and security layer in front of circus-web.
+Nginx can act as a proxy and security layer in front of cvec_circus-web.
 
-.. note:: To receive real-time status updates and graphs in circus-web, you must provide a Nginx proxy solution that has websocket support
+.. note:: To receive real-time status updates and graphs in cvec_circus-web, you must provide a Nginx proxy solution that has websocket support
 
 Nginx >= 1.3.13
 ---------------
@@ -107,7 +107,7 @@ An example Nginx config with websocket support:
 
 .. code-block:: ini
 
-    upstream circusweb_server {
+    upstream cvec_circusweb_server {
       server 127.0.0.1:8080;
     }
 
@@ -116,7 +116,7 @@ An example Nginx config with websocket support:
      server_name  _;
 
      location / {
-       proxy_pass http://circusweb_server;
+       proxy_pass http://cvec_circusweb_server;
        proxy_http_version 1.1;
        proxy_set_header Upgrade $http_upgrade;
        proxy_set_header Connection "upgrade";
@@ -128,7 +128,7 @@ An example Nginx config with websocket support:
       }
 
      location ~/media/\*(.png|.jpg|.css|.js|.ico)$ {
-       alias /path_to_site-packages/circusweb/media/;
+       alias /path_to_site-packages/cvec_circusweb/media/;
       }
     }
 
@@ -138,15 +138,15 @@ Nginx < 1.3.13
 
 Nginx versions < 1.3.13 do not have websocket support built-in.
 
-To provide websocket support for circus-web when using Nginx < 1.3.13, you can combine Nginx with Varnish or HAProxy. That is, Nginx in front of circus-web, with Varnish or HAProxy in front of Nginx.
+To provide websocket support for cvec_circus-web when using Nginx < 1.3.13, you can combine Nginx with Varnish or HAProxy. That is, Nginx in front of cvec_circus-web, with Varnish or HAProxy in front of Nginx.
 
-The example below shows the combined Nginix and Varnish configuration required to proxy circus-web and provide websocket support.
+The example below shows the combined Nginix and Varnish configuration required to proxy cvec_circus-web and provide websocket support.
 
 **Nginx configuration:**
 
 .. code-block:: ini
 
-    upstream circusweb_server {
+    upstream cvec_circusweb_server {
       server 127.0.0.1:8080;
     }
 
@@ -158,11 +158,11 @@ The example below shows the combined Nginix and Varnish configuration required t
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $http_host;
         proxy_redirect off;
-        proxy_pass http://circusweb_server;
+        proxy_pass http://cvec_circusweb_server;
       }
 
      location ~/media/\*(.png|.jpg|.css|.js|.ico)$ {
-       alias /path_to_site-packages/circusweb/media/;
+       alias /path_to_site-packages/cvec_circusweb/media/;
       }
     }
 
@@ -204,7 +204,7 @@ In the Varnish configuration example above two backends are defined.
 One serving the web console and one serving the socket connections.
 Web console requests are bound to port 8001. The Nginx 'server' directive should be configured to listen on port 8001.
 
-Websocket connections are upgraded and piped directly to the circushttpd process listening on port 8080 by Varnish. i.e. bypassing the Nginx proxy.
+Websocket connections are upgraded and piped directly to the cvec_circushttpd process listening on port 8080 by Varnish. i.e. bypassing the Nginx proxy.
 
 Ubuntu
 ------
@@ -222,10 +222,10 @@ you can install Nginx>=1.3.13 from the official Nginx stable PPA, as so:
 
 
 
-Password-protect circushttpd
+Password-protect cvec_circushttpd
 ============================
 
-As explained in the :ref:`Security` page, running *circushttpd* is pretty
+As explained in the :ref:`Security` page, running *cvec_circushttpd* is pretty
 unsafe. We don't provide any security in Circus itself, but you can protect
 your console at the NGinx level, by using http://wiki.nginx.org/HttpAuthBasicModule
 
@@ -275,10 +275,10 @@ console, you'll eventually find out that it's really simple to understand.
 
 Here is how it's split:
 
-* The `circushttpd.py` file contains the "views" definitions and some code to
+* The `cvec_circushttpd.py` file contains the "views" definitions and some code to
   handle the socket connection (via socketio).
 * the `controller.py` contains a single class which is in charge of doing the
-  communication with the circus controller. It allows to have a nicer high
+  communication with the cvec_circus controller. It allows to have a nicer high
   level API when defining the web server.
 
 If you want to add a feature in the web console you can reuse the code that's
@@ -287,7 +287,7 @@ existing. A few tools are at your disposal to ease the process:
 * There is a `render_template` function, which takes the named arguments you
   pass to it and pass them to the template renderer and return the resulting
   HTML. It also passes some additional variables, such as the session, the
-  circus version and the client if defined.
+  cvec_circus version and the client if defined.
 * If you want to run commands and doa redirection depending the result of it,
   you can use the `run_command` function, which takes a callable as a first
   argument, a message in case of success and a redirection url.

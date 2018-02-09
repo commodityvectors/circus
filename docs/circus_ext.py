@@ -1,5 +1,5 @@
 import os
-from circus.commands import get_commands
+from cvec_circus.commands import get_commands
 
 
 def generate_commands(app):
@@ -16,7 +16,7 @@ def generate_commands(app):
 
     with open(tocname, "w") as toc:
         toc.write(".. include:: commands-intro%s\n\n" % ext)
-        toc.write("circus-ctl commands\n")
+        toc.write("cvec_circus-ctl commands\n")
         toc.write("-------------------\n\n")
 
         commands = get_commands()

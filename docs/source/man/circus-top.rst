@@ -1,17 +1,17 @@
-circus-top man page
+cvec_circus-top man page
 ###################
 
 Synopsis
 --------
 
-circus-top [options]
+cvec_circus-top [options]
 
 
 Description
 -----------
 
-circus-top is a *top*-like command to display the Circus daemon and
-processes managed by circus.
+cvec_circus-top is a *top*-like command to display the Circus daemon and
+processes managed by cvec_circus.
 
 
 Options
@@ -36,6 +36,6 @@ Options
 See also
 --------
 
-`circus` (1), `circusctl` (1), `circusd` (1), `circusd-stats` (1), `circus-plugin` (1).
+`cvec_circus` (1), `cvec_circusctl` (1), `cvec_circusd` (1), `cvec_circusd-stats` (1), `cvec_circus-plugin` (1).
 
-Full Documentation is available at https://circus.readthedocs.io
+Full Documentation is available at https://cvec_circus.readthedocs.io

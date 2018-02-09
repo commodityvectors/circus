@@ -7,9 +7,9 @@ Circus is a Python package which is published on PyPI - the Python Package Index
 
 The simplest way to install it is to use pip, a tool for installing and managing Python packages::
 
-    $ pip install circus
+    $ pip install cvec_circus
 
-Or download the `archive on PyPI <https://pypi.python.org/pypi/circus>`_,
+Or download the `archive on PyPI <https://pypi.python.org/pypi/cvec_circus>`_,
 extract and install it manually with::
 
     $ python setup.py install
@@ -17,8 +17,8 @@ extract and install it manually with::
 If you want to try out Circus, see the :ref:`examples`.
 
 If you are using debian or any debian based distribution, you also can use the
-ppa to install circus, it's at
-https://launchpad.net/~roman-imankulov/+archive/circus
+ppa to install cvec_circus, it's at
+https://launchpad.net/~roman-imankulov/+archive/cvec_circus
 
 
 zc.buildout
@@ -38,11 +38,11 @@ Circus works with:
 
 - Python 2.6, 2.7, 3.2 or 3.3
 - zeromq >= 2.1.10 
-    - The version of zeromq supported is ultimately determined by what version of `pyzmq <https://github.com/zeromq/pyzmq>`_ is installed by pip during circus installation.
+    - The version of zeromq supported is ultimately determined by what version of `pyzmq <https://github.com/zeromq/pyzmq>`_ is installed by pip during cvec_circus installation.
     - Their current release supports 2.x (limited), 3.x, and 4.x ZeroMQ versions.
     - **Note**: If you are using PyPy instead of CPython, make sure to read their installation docs as ZeroMQ version support is not the same on PyPy.
 
-When you install circus, the latest
+When you install cvec_circus, the latest
 versions of the Python dependencies will be pulled out for you.
 
 You can also install them manually using the pip-requirements.txt
@@ -51,6 +51,6 @@ file we provide::
     $ pip install -r pip-requirements.txt
 
 
-If you want to run the Web console you will need to install **circus-web**::
+If you want to run the Web console you will need to install **cvec_circus-web**::
 
-    $ pip install circus-web
+    $ pip install cvec_circus-web

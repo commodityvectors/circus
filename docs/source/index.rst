@@ -1,7 +1,7 @@
 Circus: A Process & Socket Manager
 ##################################
 
-.. image:: circus-medium.png
+.. image:: cvec_circus-medium.png
    :align: right
 
 Circus is a Python program which can be used to monitor and control processes and sockets.
@@ -17,7 +17,7 @@ Running a Circus Daemon
 -----------------------
 
 
-Circus provides a command-line script call **circusd** that can be used
+Circus provides a command-line script call **cvec_circusd** that can be used
 to manage :term:`processes` organized in one or more :term:`watchers`.
 
 Circus' command-line tool is configurable using an ini-style
@@ -36,9 +36,9 @@ Here's a very minimal example:
     numprocesses = 2
 
 
-The file is then passed to *circusd*::
+The file is then passed to *cvec_circusd*::
 
-    $ circusd example.ini
+    $ cvec_circusd example.ini
 
 
 Besides processes, Circus can also bind sockets. Since every process managed by
@@ -55,7 +55,7 @@ Running a socket is as simple as adding a *socket* section in the config file:
 
 To learn more about sockets, see :ref:`sockets`.
 
-To understand why it's a killer feature, read :ref:`whycircussockets`.
+To understand why it's a killer feature, read :ref:`whycvec_circussockets`.
 
 
 Controlling Circus
@@ -63,10 +63,10 @@ Controlling Circus
 
 Circus provides two command-line tools to manage your running daemon:
 
-- *circusctl*, a management console you can use to perform
+- *cvec_circusctl*, a management console you can use to perform
   actions such as adding or removing :term:`workers`
 
-- *circus-top*, a top-like console you can use to display the memory and
+- *cvec_circus-top*, a top-like console you can use to display the memory and
   cpu usage of your running Circus.
 
 To learn more about these, see :ref:`cli`
@@ -74,7 +74,7 @@ To learn more about these, see :ref:`cli`
 Circus also offers a web dashboard that can connect to a
 running Circus daemon and let you monitor and interact with it.
 
-To learn more about this feature, see :ref:`circushttpd`
+To learn more about this feature, see :ref:`cvec_circushttpd`
 
 
 What now ?
@@ -95,9 +95,9 @@ More on contributing: :ref:`contribs`.
 
 Useful Links:
 
-- There's a mailing-list for any feedback or question: http://tech.groups.yahoo.com/group/circus-dev/
-- The repository and issue tracker are on GitHub : https://github.com/circus-tent/circus
-- Join us on the IRC : Freenode, channel **#mozilla-circus**
+- There's a mailing-list for any feedback or question: http://tech.groups.yahoo.com/group/cvec_circus-dev/
+- The repository and issue tracker are on GitHub : https://github.com/cvec_circus-tent/cvec_circus
+- Join us on the IRC : Freenode, channel **#mozilla-cvec_circus**
 
 
 Documentation index

@@ -1,16 +1,16 @@
-circus-plugin man page
+cvec_circus-plugin man page
 ######################
 
 Synopsis
 --------
 
-circus-plugin [options] [plugin]
+cvec_circus-plugin [options] [plugin]
 
 
 Description
 -----------
 
-circus-plugin allows to launch a plugin from a running Circus daemon.
+cvec_circus-plugin allows to launch a plugin from a running Circus daemon.
 
 
 Arguments
@@ -26,7 +26,7 @@ Options
    Connection endpoint.
 
 :--pubsub *PUBSUB*:
-   The circusd ZeroMQ pub/sub socket to connect to.
+   The cvec_circusd ZeroMQ pub/sub socket to connect to.
 
 :--config *CONFIG*: The plugin configuration file.
 
@@ -54,6 +54,6 @@ Options
 See also
 --------
 
-`circus` (1), `circusd` (1), `circusctl` (1), `circusd-stats` (1), `circus-top` (1).
+`cvec_circus` (1), `cvec_circusd` (1), `cvec_circusctl` (1), `cvec_circusd-stats` (1), `cvec_circus-top` (1).
 
-Full Documentation is available at http://circus.readthedocs.org
+Full Documentation is available at http://cvec_circus.readthedocs.org

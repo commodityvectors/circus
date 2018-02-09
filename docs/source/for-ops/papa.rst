@@ -10,7 +10,7 @@ libraries on which it depends.
 
 If you are on a Unix-type system, Circus can use the Papa process kernel.
 When used, Papa will create a long-lived daemon that will serve as the host for
-any processes and sockets you create with it. If circus is shutdown, Papa will
+any processes and sockets you create with it. If cvec_circus is shutdown, Papa will
 maintain everything it is hosting.
 
 
@@ -23,7 +23,7 @@ Start by installing the `papa` and `setproctitle` modules::
     pip install setproctitle
 
 The `setproctitle` module is optional. It will be used if present to rename the
-Papa daemon for `top` and `ps` to something like "papa daemon from circusd".
+Papa daemon for `top` and `ps` to something like "papa daemon from cvec_circusd".
 If you do not install the `setproctitle` module, that title will be the command
 line of the process that launched it. Very confusing.
 
@@ -34,7 +34,7 @@ plugins.
 
 .. code-block:: ini
 
-    [circus]
+    [cvec_circus]
     loglevel = info
 
     [watcher:nginx]
@@ -74,7 +74,7 @@ plugins.
     use_papa = true
 
     [watcher:web_app]
-    cmd = /my_service/env/bin/uwsgi --ini uwsgi-live.ini --socket fd://$(circus.sockets.web) --stats 127.0.0.1:809$(circus.wid)
+    cmd = /my_service/env/bin/uwsgi --ini uwsgi-live.ini --socket fd://$(cvec_circus.sockets.web) --stats 127.0.0.1:809$(cvec_circus.wid)
     working_dir = /my_service/web_app
     graceful_timeout=10
     stop_signal = QUIT
@@ -98,7 +98,7 @@ plugins.
     use_papa = true
 
     [plugin:flapping]
-    use = circus.plugins.flapping.Flapping
+    use = cvec_circus.plugins.flapping.Flapping
     window = 10
     priority = 1000
 
@@ -141,8 +141,8 @@ Operation
 
 Most things remain unchanged whether you use Papa or not. You can still start
 and stop processes. You can still get status and stats for processes. The main
-thing that changes is that when you do `circusctl quit`, all of the Papa
-processes are left running. When you start **circusd** back up, those processes
+thing that changes is that when you do `cvec_circusctl quit`, all of the Papa
+processes are left running. When you start **cvec_circusd** back up, those processes
 are recovered.
 
 .. note::
@@ -170,7 +170,7 @@ Problems
 
 If you use the `incr` or `decr` command to change the process count for a
 watcher, this will be reset to the level specified in the INI file when
-**circusd** is restarted.
+**cvec_circusd** is restarted.
 
 Also, I have experienced problems with the combination of `copy_env` and
 `virtualenv`. You may note that the INI sample above circumvents this issue

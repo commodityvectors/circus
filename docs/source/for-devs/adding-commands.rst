@@ -7,9 +7,9 @@ We tried to make adding new commands as simple as possible.
 
 You need to do three things:
 
-1. create a ``your_command.py`` file under ``circus/commands/``.
+1. create a ``your_command.py`` file under ``cvec_circus/commands/``.
 2. Implement a single class in there, with predefined methods
-3. Add the new command in ``circus/commands/__init__.py``.
+3. Add the new command in ``cvec_circus/commands/__init__.py``.
 
 Let's say we want to add a command which returns the number of watchers
 currently in use, we would do something like this (extensively commented to
@@ -17,8 +17,8 @@ allow you to follow more easily):
 
 .. code-block:: python
 
-    from circus.commands.base import Command
-    from circus.exc import ArgumentError, MessageError
+    from cvec_circus.commands.base import Command
+    from cvec_circus.exc import ArgumentError, MessageError
     class NumWatchers(Command):
         """It is a good practice to describe what the class does here.
 
@@ -27,7 +27,7 @@ allow you to follow more easily):
         so don't be affraid of being exhaustive, that's what it is made
         for.
         """
-        # all the commands inherit from `circus.commands.base.Command`
+        # all the commands inherit from `cvec_circus.commands.base.Command`
 
         # you need to specify a name so we find back the command somehow
         name = "numwatchers"
@@ -57,14 +57,14 @@ allow you to follow more easily):
         def console_msg(self, msg):
             # msg is what is returned by the execute method.
             # this method is used to format the response for a console (it is
-            # used for instance by circusctl to print its messages)
+            # used for instance by cvec_circusctl to print its messages)
             return "a string that will be displayed"
         
         def message(self, *args, **opts):
             # message handles console input.
             # this method is used to map console arguments to the command
             # options. (its is used for instance when calling the command via
-            # circusctl)
+            # cvec_circusctl)
             # NotImplementedError will be thrown if the function is missing
             numArgs = 1
             if not len(args) == numArgs:

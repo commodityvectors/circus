@@ -21,7 +21,7 @@ Glossary: Circus-specific terms
 
     arbiter
         The *arbiter* is responsible for managing all the watchers within
-        circus, ensuring all processes run correctly.
+        cvec_circus, ensuring all processes run correctly.
 
     controller
         A *controller* contains the set of actions that can be performed on

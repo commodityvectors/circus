@@ -1,7 +1,7 @@
 .DS_Store
 *.pyc
 *.pyo
-circus.egg-info
+cvec_circus.egg-info
 ^bin
 ^lib
 ^lib64

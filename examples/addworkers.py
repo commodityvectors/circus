@@ -1,5 +1,5 @@
-from circus.client import CircusClient
-from circus.util import DEFAULT_ENDPOINT_DEALER
+from cvec_circus.client import CircusClient
+from cvec_circus.util import DEFAULT_ENDPOINT_DEALER
 
 client = CircusClient(endpoint=DEFAULT_ENDPOINT_DEALER)
 

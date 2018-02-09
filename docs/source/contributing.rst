@@ -9,9 +9,9 @@ We're trying to build a tool that's useful for others, and easily extensible.
 We really are open to any contributions, in the form of code, documentation,
 discussions, feature proposal etc.
 
-You can start a topic in our mailing list : http://tech.groups.yahoo.com/group/circus-dev/
+You can start a topic in our mailing list : http://tech.groups.yahoo.com/group/cvec_circus-dev/
 
-Or add an issue in our `bug tracker <https://github.com/circus-tent/circus/>`_
+Or add an issue in our `bug tracker <https://github.com/cvec_circus-tent/cvec_circus/>`_
 
 
 Fixing typos and enhancing the documentation
@@ -51,7 +51,7 @@ anything! You can use the `tox` command to ensure this, it will run the
 testsuite under the different supported python versions.
 
 Please use : http://issue2pr.herokuapp.com/ to reference a commit to an
-existing circus issue, if any.
+existing cvec_circus issue, if any.
 
 Avoiding merge commits
 ======================
@@ -79,9 +79,9 @@ Discussing
 ==========
 
 If you find yourself in need of any help while looking at the code of Circus,
-you can go and find us on irc at `#mozilla-circus on irc.freenode.org
-<irc://irc.freenode.net/mozilla-circus>`_ (or if you don't have any IRC client,
+you can go and find us on irc at `#mozilla-cvec_circus on irc.freenode.org
+<irc://irc.freenode.net/mozilla-cvec_circus>`_ (or if you don't have any IRC client,
 use `the webchat
-<http://webchat.freenode.net/?channels=mozilla-circus&uio=d4>`_)
+<http://webchat.freenode.net/?channels=mozilla-cvec_circus&uio=d4>`_)
 
-You can also start a thread in our mailing list - http://tech.groups.yahoo.com/group/circus-dev
+You can also start a thread in our mailing list - http://tech.groups.yahoo.com/group/cvec_circus-dev

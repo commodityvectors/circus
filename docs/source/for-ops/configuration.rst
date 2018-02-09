@@ -9,7 +9,7 @@ Example:
 
 .. code-block:: ini
 
-    [circus]
+    [cvec_circus]
     check_delay = 5
     endpoint = tcp://127.0.0.1:5555
     pubsub_endpoint = tcp://127.0.0.1:5556
@@ -18,7 +18,7 @@ Example:
 
     [watcher:myprogram]
     cmd = python
-    args = -u myprogram.py $(circus.wid) $(CIRCUS.ENV.VAR)
+    args = -u myprogram.py $(cvec_circus.wid) $(CIRCUS.ENV.VAR)
     warmup_delay = 0
     numprocesses = 5
 
@@ -39,7 +39,7 @@ Example:
     CAKE = lie
 
     [plugin:statsd]
-    use = circus.plugins.statsd.StatsdEmitter
+    use = cvec_circus.plugins.statsd.StatsdEmitter
     host = localhost
     port = 8125
     sample_rate = 1.0
@@ -50,14 +50,14 @@ Example:
     port = 8080
 
 
-circus - single section
+cvec_circus - single section
 =======================
     **endpoint**
-        The ZMQ socket used to manage Circus via **circusctl**.
+        The ZMQ socket used to manage Circus via **cvec_circusctl**.
         (default: *tcp://127.0.0.1:5555*)
     **endpoint_owner**
         If set to a system username and the endpoint is an ipc socket like
-        *ipc://var/run/circusd.sock*, then ownership of the socket file will
+        *ipc://var/run/cvec_circusd.sock*, then ownership of the socket file will
         be changed to that user at startup. For more details, see :ref:`security`.
         (default: None)
     **pubsub_endpoint**
@@ -65,15 +65,15 @@ circus - single section
         (default: *tcp://127.0.0.1:5556*)
     **papa_endpoint**
         If using :ref:`papa`, you can specify the endpoint, such as
-        *ipc://var/run/circusd.sock*.
+        *ipc://var/run/cvec_circusd.sock*.
         (default: *tcp://127.0.0.1:20202*)
     **statsd**
-        If set to True, Circus runs the circusd-stats daemon. (default: False)
+        If set to True, Circus runs the cvec_circusd-stats daemon. (default: False)
     **stats_endpoint**
         The ZMQ PUB/SUB socket receiving publications of stats.
         (default: *tcp://127.0.0.1:5557*)
     **statsd_close_outputs**
-        If True sends the circusd-stats stdout/stderr to ``/dev/null``.
+        If True sends the cvec_circusd-stats stdout/stderr to ``/dev/null``.
         (default: False)
     **check_delay**
         The polling interval in seconds for the ZMQ socket. (default: 5)
@@ -91,25 +91,25 @@ circus - single section
     **warmup_delay**
         The interval in seconds between two watchers start. Must be an int. (default: 0)
     **httpd**
-        If set to True, Circus runs the circushttpd daemon. (default: False)
+        If set to True, Circus runs the cvec_circushttpd daemon. (default: False)
     **httpd_host**
-        The host ran by the circushttpd daemon. (default: localhost)
+        The host ran by the cvec_circushttpd daemon. (default: localhost)
     **httpd_port**
-        The port ran by the circushttpd daemon. (default: 8080)
+        The port ran by the cvec_circushttpd daemon. (default: 8080)
     **httpd_close_outputs**
-        If True, sends the circushttpd stdout/stderr to ``/dev/null``.
+        If True, sends the cvec_circushttpd stdout/stderr to ``/dev/null``.
         (default: False)
     **debug**
-        If set to True, all Circus stout/stderr daemons are redirected to circusd
+        If set to True, all Circus stout/stderr daemons are redirected to cvec_circusd
         stdout/stderr (default: False)
     **debug_gc**
-        If set to True, circusd outputs additional log info from the garbage
+        If set to True, cvec_circusd outputs additional log info from the garbage
         collector. This can be useful in tracking down memory leaks.
         (default: False)
     **pidfile**
         The file that must be used to keep the daemon pid.
     **umask**
-        Value for umask. If not set, circusd will not attempt to modify umask.
+        Value for umask. If not set, cvec_circusd will not attempt to modify umask.
     **loglevel**
         The loglevel that we want to see (default: INFO)
     **logoutput**
@@ -141,7 +141,7 @@ circus - single section
                 level: DEBUG
                 formatter: simple
             loggers:
-              circus:
+              cvec_circus:
                 level: DEBUG
                 handlers: [logfile]
                 propagate: no
@@ -152,7 +152,7 @@ circus - single section
 watcher:NAME - as many sections as you want
 ===========================================
     **NAME**
-        The name of the watcher. This name is used in **circusctl**
+        The name of the watcher. This name is used in **cvec_circusctl**
     **cmd**
         The executable program to run.
     **args**
@@ -186,7 +186,7 @@ watcher:NAME - as many sections as you want
     **autostart**
         If set to false, the watcher will not be started automatically
         when the arbiter starts. The watcher can be started explicitly
-        (example: `circusctrl start myprogram`). (Default: True)
+        (example: `cvec_circusctrl start myprogram`). (Default: True)
     **numprocesses**
         The number of processes to run for this watcher.
     **rlimit_LIMIT**
@@ -362,7 +362,7 @@ watcher:NAME - as many sections as you want
 
     **virtualenv_py_ver**
         Specifies the python version of the virtualenv (e.g "3.3").
-        It's usefull if circus run with another python version (e.g "2.7")
+        It's usefull if cvec_circus run with another python version (e.g "2.7")
         The watcher will scan the local **site-packages** of the specified
         python version and load its content into the execution
         environment. Must be used with **virtualenv**. Defaults to None.
@@ -410,7 +410,7 @@ socket:NAME - as many sections as you want
         problem so the default is to fail. Specify `True` to simply remove the
         old file if you are sure that the socket is managed only by Circus.
     **so_reuseport**
-        If set to True and SO_REUSEPORT is available on target platform, circus
+        If set to True and SO_REUSEPORT is available on target platform, cvec_circus
         will create and bind new SO_REUSEPORT socket(s) for every worker it starts
         which is a user of this socket(s).
     **blocking**
@@ -421,7 +421,7 @@ socket:NAME - as many sections as you want
         Set to true to use the :ref:`papa`.
 
 
-Once a socket is created, the *${circus.sockets.NAME}* string can be used in the
+Once a socket is created, the *${cvec_circus.sockets.NAME}* string can be used in the
 command (`cmd` or `args`) of a watcher. Circus will replace it by the FD value. The watcher must also
 have `use_sockets` set to `True` otherwise the socket will have been closed and
 you will get errors when the watcher tries to use it.
@@ -431,7 +431,7 @@ Example:
 .. code-block:: ini
 
     [watcher:webworker]
-    cmd = chaussette --fd $(circus.sockets.webapp) chaussette.util.bench_app
+    cmd = chaussette --fd $(cvec_circus.sockets.webapp) chaussette.util.bench_app
     use_sockets = True
 
     [socket:webapp]
@@ -500,7 +500,7 @@ Example:
     [env:worker2]
     CAKE = lie
 
-`worker1` will be run with PATH = $PATH (expanded from the environment circusd was run in)
+`worker1` will be run with PATH = $PATH (expanded from the environment cvec_circusd was run in)
 `worker2` will be run with PATH = /bin and CAKE = lie
 
 It's possible to use wildcards as well.
@@ -528,26 +528,26 @@ Using environment variables
 When writing your configuration file, you can use environment
 variables defined in the *env* section or in *os.environ* itself.
 
-You just have to use the *circus.env.* prefix.
+You just have to use the *cvec_circus.env.* prefix.
 
 Example:
 
 .. code-block:: ini
 
     [watcher:worker1]
-    cmd = $(circus.env.shell)
+    cmd = $(cvec_circus.env.shell)
 
     [watcher:worker2]
-    baz = $(circus.env.user)
-    bar = $(circus.env.yeah)
-    sup = $(circus.env.oh)
+    baz = $(cvec_circus.env.user)
+    bar = $(cvec_circus.env.yeah)
+    sup = $(cvec_circus.env.oh)
 
     [socket:socket1]
-    port = $(circus.env.port)
+    port = $(cvec_circus.env.port)
 
     [plugin:plugin1]
     use = some.path
-    parameter1 = $(circus.env.plugin_param)
+    parameter1 = $(cvec_circus.env.plugin_param)
 
     [env]
     yeah = boo
@@ -589,7 +589,7 @@ This works with both `cmd` and `args`.
 
 **Important**:
 
-- All variables are prefixed with `circus.`
+- All variables are prefixed with `cvec_circus.`
 - The replacement is case insensitive.
 
 Stream configuration

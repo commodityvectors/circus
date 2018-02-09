@@ -58,5 +58,5 @@ install:
 
 notifications:
     email: tarek@mozilla.com
-    irc: "irc.freenode.org#mozilla-circus"
+    irc: "irc.freenode.org#mozilla-cvec_circus"
     on_success: change

@@ -4,10 +4,10 @@ import time
 import os
 import random
 
-fd = int(sys.argv[1])   # getting the FD from circus
+fd = int(sys.argv[1])   # getting the FD from cvec_circus
 sock = socket.fromfd(fd, socket.AF_INET, socket.SOCK_STREAM)
 
-# By default socket created by circus is in non-blocking mode. For this example
+# By default socket created by cvec_circus is in non-blocking mode. For this example
 # we change this.
 sock.setblocking(1)
 random.seed()

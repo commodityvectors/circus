@@ -1,9 +1,9 @@
-from circus import get_arbiter
+from cvec_circus import get_arbiter
 
 
 myprogram = {
     "cmd": "python",
-    "args": "-u dummy_fly.py $(circus.wid)",
+    "args": "-u dummy_fly.py $(cvec_circus.wid)",
     "numprocesses": 3,
 }
 

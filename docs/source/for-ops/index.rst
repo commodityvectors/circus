@@ -18,11 +18,11 @@ out there are done in 2.7. To learn how to deploy Circus, check out
 :ref:`deployment`.
 
 To manage a Circus daemon, you should get familiar with the list of
-:ref:`commands` you can use in **circusctl**. Notice that you can have the same
-help online when you run **circusctl** as a shell.
+:ref:`commands` you can use in **cvec_circusctl**. Notice that you can have the same
+help online when you run **cvec_circusctl** as a shell.
 
-We also provide **circus-top**, see :ref:`cli`, and a nice web dashboard, see
-:ref:`circushttpd`.
+We also provide **cvec_circus-top**, see :ref:`cli`, and a nice web dashboard, see
+:ref:`cvec_circushttpd`.
 
 For quick watcher and process management – start, stop, increment, decrement
 etc – there is a Tcl/Tk interface. See `Ringmaster <https://github.com/viotti/ringmaster>`_.
@@ -40,7 +40,7 @@ Ops documentation index
    configuration
    commands
    cli
-   circusweb
+   cvec_circusweb
    sockets
    using-plugins
    deployment

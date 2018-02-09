@@ -1,7 +1,7 @@
 __author__ = 'Code Cobblers, Inc.'
 
 # This is an example of how to get lossless reload of WSGI web servers with
-# circus and uWSGI. You will, of course, need to specify the web app you
+# cvec_circus and uWSGI. You will, of course, need to specify the web app you
 # need for uWSGI to run.
 #
 # This example also solves another problem I have faced many times with uWSGI.
@@ -27,8 +27,8 @@ from time import time, sleep
 import socket
 from json import loads
 import signal
-from circus import logger
-from circus.py3compat import PY2
+from cvec_circus import logger
+from cvec_circus.py3compat import PY2
 import re
 
 worker_states = {

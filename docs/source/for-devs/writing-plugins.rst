@@ -3,17 +3,17 @@
 Writing plugins
 ###############
 
-Circus comes with a plugin system which lets you interact with **circusd**.
+Circus comes with a plugin system which lets you interact with **cvec_circusd**.
 
 .. note::
 
-   We might add circusd-stats support to plugins later on.
+   We might add cvec_circusd-stats support to plugins later on.
 
 
 A Plugin is composed of two parts:
 
-- a ZMQ subscriber to all events published by **circusd**
-- a ZMQ client to send commands to **circusd**
+- a ZMQ subscriber to all events published by **cvec_circusd**
+- a ZMQ client to send commands to **cvec_circusd**
 
 Each plugin is run as a separate process under a custom watcher.
 
@@ -31,20 +31,20 @@ The CircusPlugin class
 ======================
 
 Circus provides a base class to help you implement plugins:
-:class:`circus.plugins.CircusPlugin`
+:class:`cvec_circus.plugins.CircusPlugin`
 
 
-.. autoclass:: circus.plugins.CircusPlugin
+.. autoclass:: cvec_circus.plugins.CircusPlugin
    :members: call, cast, handle_recv, handle_stop, handle_init
 
 When initialized by Circus, this class creates its own event loop that receives
-all **circusd** events and pass them to :func:`handle_recv`. The data received
+all **cvec_circusd** events and pass them to :func:`handle_recv`. The data received
 is a tuple containing the topic and the data itself.
 
 :func:`handle_recv` **must** be implemented by the plugin.
 
 The :func:`call` and :func:`cast` methods can be used to interact with
-**circusd** if you are building a Plugin that actively interacts with
+**cvec_circusd** if you are building a Plugin that actively interacts with
 the daemon.
 
 :func:`handle_init` and :func:`handle_stop` are just convenience methods
@@ -57,11 +57,11 @@ Writing a plugin
 ================
 
 Let's write a plugin that logs in a file every event happening in
-**circusd**. It takes one argument which is the filename.
+**cvec_circusd**. It takes one argument which is the filename.
 
 The plugin may look like this::
 
-    from circus.plugins import CircusPlugin
+    from cvec_circus.plugins import CircusPlugin
 
 
     class Logger(CircusPlugin):
@@ -103,10 +103,10 @@ isn't the same and therefore code might not get executed as expected.
 Trying a plugin
 ===============
 
-You can run a plugin through the command line with the **circus-plugin** command,
+You can run a plugin through the command line with the **cvec_circus-plugin** command,
 by specifying the plugin fully qualified name::
 
-    $ circus-plugin --endpoint tcp://127.0.0.1:5555 --pubsub tcp://127.0.0.1:5556 --config filename:circus-events.log myproject.plugins.Logger
+    $ cvec_circus-plugin --endpoint tcp://127.0.0.1:5555 --pubsub tcp://127.0.0.1:5556 --config filename:cvec_circus-events.log myproject.plugins.Logger
     [INFO] Loading the plugin...
     [INFO] Endpoint: 'tcp://127.0.0.1:5555'
     [INFO] Pub/sub: 'tcp://127.0.0.1:5556'
@@ -120,7 +120,7 @@ name for your plugin:
 
     [plugin:logger]
     use = myproject.plugins.Logger
-    filename = /var/myproject/circus.log
+    filename = /var/myproject/cvec_circus.log
 
 **use** is mandatory and points to the fully qualified name of the plugin.
 
@@ -129,7 +129,7 @@ and pass any other variable contained in the section to the plugin constructor
 via the **config** mapping.
 
 You can also programmatically add plugins when you create a
-:class:`circus.arbiter.Arbiter` class or use :func:`circus.get_arbiter`,
+:class:`cvec_circus.arbiter.Arbiter` class or use :func:`cvec_circus.get_arbiter`,
 see :ref:`library`.
 
 
@@ -138,4 +138,4 @@ Performances
 
 Since every plugin is loaded in its own process, it should not impact
 the overall performances of the system as long as the work done by the
-plugin is not doing too many calls to the **circusd** process.
+plugin is not doing too many calls to the **cvec_circusd** process.

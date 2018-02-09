@@ -1,16 +1,16 @@
-circusd-stats man page
+cvec_circusd-stats man page
 ######################
 
 Synopsis
 --------
 
-circusd-stats [options]
+cvec_circusd-stats [options]
 
 
 Description
 -----------
 
-circusd-stats runs the stats aggregator for Circus.
+cvec_circusd-stats runs the stats aggregator for Circus.
 
 
 Options
@@ -20,7 +20,7 @@ Options
    Connection endpoint.
 
 :--pubsub *PUBSUB*:
-   The circusd ZeroMQ pub/sub socket to connect to.
+   The cvec_circusd ZeroMQ pub/sub socket to connect to.
 
 :--statspoint *STATSPOINT*:
    The ZeroMQ pub/sub socket to send data to.
@@ -47,6 +47,6 @@ Options
 See also
 --------
 
-`circus` (1), `circusd` (1), `circusctl` (1), `circus-plugin` (1), `circus-top` (1).
+`cvec_circus` (1), `cvec_circusd` (1), `cvec_circusctl` (1), `cvec_circus-plugin` (1), `cvec_circus-top` (1).
 
-Full Documentation is available at https://circus.readthedocs.io
+Full Documentation is available at https://cvec_circus.readthedocs.io

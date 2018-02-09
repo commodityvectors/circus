@@ -3,7 +3,7 @@ Frequently Asked Questions
 
 Here is a list of frequently asked questions about Circus:
 
-.. _whycircussockets:
+.. _whycvec_circussockets:
 
 How does Circus stack compare to a classical stack?
 ===================================================
@@ -36,7 +36,7 @@ Circus' approach on this is to manage processes *and* sockets.
 
 A Circus stack can look like this:
 
-.. image:: circus-stack.png
+.. image:: cvec_circus-stack.png
 
 
 So, like Gunicorn,
@@ -67,14 +67,14 @@ See:
 How to troubleshoot Circus?
 ===========================
 
-By default, `circusd` keeps its logging to `stdout` rather
+By default, `cvec_circusd` keeps its logging to `stdout` rather
 sparse. This lack of output can make things hard to troubleshoot when
 processes seem to be having trouble starting.
 
-To increase the logging `circusd` provides, try increasing the log
+To increase the logging `cvec_circusd` provides, try increasing the log
 level. To see the available log levels just use the `--help` flag. ::
 
-    $ circus --log-level debug test.ini
+    $ cvec_circus --log-level debug test.ini
 
 One word of warning. If a process is flapping and the debug log level
 is turned on, you will see messages for each start attempt. It might
@@ -85,9 +85,9 @@ be helpful to configure the app that is flapping to use a
     cmd = python -m myapp.wsgi
     warmup_delay = 5
 
-By default, `stdout` and `stderr` are captured by the `circusd`
+By default, `stdout` and `stderr` are captured by the `cvec_circusd`
 process. If you are testing your config and want to see the output in
-line with the circusd output, you can configure your watcher to use
+line with the cvec_circusd output, you can configure your watcher to use
 the `StdoutStream` class. ::
 
     [watcher:webapp]

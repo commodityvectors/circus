@@ -1,4 +1,4 @@
-from circus.consumer import CircusConsumer
+from cvec_circus.consumer import CircusConsumer
 import json
 
 

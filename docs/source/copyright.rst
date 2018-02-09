@@ -4,7 +4,7 @@ Copyright
 Circus was initiated by Tarek Ziade and is licenced under APLv2
 
 Benoit Chesneau was an early contributor and did many things, like most of
-the circus.commands work.
+the cvec_circus.commands work.
 
 
 Licence
@@ -30,5 +30,5 @@ Licence
 Contributors
 ============
 
-See the full list at https://github.com/circus-tent/circus/blob/master/CONTRIBUTORS.txt
+See the full list at https://github.com/cvec_circus-tent/cvec_circus/blob/master/CONTRIBUTORS.txt
 

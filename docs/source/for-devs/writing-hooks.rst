@@ -113,7 +113,7 @@ A hook must follow this signature::
     def hook(watcher, arbiter, hook_name, **kwargs):
         ...
         # If you don't return True, the hook can change
-        # the behavior of circus (depending on the hook)
+        # the behavior of cvec_circus (depending on the hook)
         return True
 
 
@@ -125,7 +125,7 @@ The **after_spawn** hook adds the pid parameters::
 
     def after_spawn(watcher, arbiter, hook_name, pid, **kwargs):
         ...
-        # If you don't return True, circus will kill the process
+        # If you don't return True, cvec_circus will kill the process
         return True
 
 Where **pid** is the PID of the corresponding process.
@@ -134,7 +134,7 @@ Likewise, **before_signal** and **after_signal** hooks add pid and signum::
 
     def before_signal_hook(watcher, arbiter, hook_name, pid, signum, **kwargs):
         ...
-        # If you don't return True, circus won't send the signum signal
+        # If you don't return True, cvec_circus won't send the signum signal
         # (SIGKILL is always sent)
         return True
 

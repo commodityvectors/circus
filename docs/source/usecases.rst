@@ -10,10 +10,10 @@ Running a WSGI application
 
 
 Running a WSGI application with Circus is quite interesting because you can
-watch & manage your *web workers* using *circus-top*, *circusctl* or
+watch & manage your *web workers* using *cvec_circus-top*, *cvec_circusctl* or
 the Web interface.
 
-This is made possible by using Circus sockets. See :ref:`whycircussockets`.
+This is made possible by using Circus sockets. See :ref:`whycvec_circussockets`.
 
 Let's take an example with a minimal `Pyramid <http://docs.pylonsproject.org/projects/pyramid/en/latest/>`_
 application::
@@ -51,14 +51,14 @@ configuration file:
 
 .. code-block:: ini
 
-    [circus]
+    [cvec_circus]
     check_delay = 5
     endpoint = tcp://127.0.0.1:5555
     pubsub_endpoint = tcp://127.0.0.1:5556
     stats_endpoint = tcp://127.0.0.1:5557
 
     [watcher:webworker]
-    cmd = chaussette --fd $(circus.sockets.webapp) app.application
+    cmd = chaussette --fd $(cvec_circus.sockets.webapp) app.application
     use_sockets = True
     numprocesses = 3
 
@@ -69,12 +69,12 @@ configuration file:
 This file tells Circus to bind a socket on port *8080* and run *chaussette*
 workers on that socket -- by passing its fd.
 
-Save it to *server.ini* and try to run it using **circusd** ::
+Save it to *server.ini* and try to run it using **cvec_circusd** ::
 
-    $ circusd server.ini
+    $ cvec_circusd server.ini
     [INFO] Starting master on pid 8971
     [INFO] sockets started
-    [INFO] circusd-stats started
+    [INFO] cvec_circusd-stats started
     [INFO] webapp started
     [INFO] Arbiter now waiting for commands
 
@@ -82,7 +82,7 @@ Make sure you still get the app on **http://localhost:8080/hello/tarek**.
 
 Congrats ! you have a WSGI application running 3 workers.
 
-You can run the :ref:`circushttpd` or the :ref:`cli`, and enjoy Circus management.
+You can run the :ref:`cvec_circushttpd` or the :ref:`cli`, and enjoy Circus management.
 
 Running a Django application
 ============================
@@ -98,7 +98,7 @@ directory that has settings.py in it (with Django 1.4+ this directory has manage
     port = 8080
 
     [watcher:dwebworker]
-    cmd = chaussette --fd $(circus.sockets.dwebapp) dproject.wsgi.application
+    cmd = chaussette --fd $(cvec_circus.sockets.dwebapp) dproject.wsgi.application
     use_sockets = True
     numprocesses = 2
 

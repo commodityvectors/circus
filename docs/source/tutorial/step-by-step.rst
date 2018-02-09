@@ -3,7 +3,7 @@
 Step-by-step tutorial
 #####################
 
-The `examples directory <https://github.com/circus-tent/circus/tree/master/examples>`_ in
+The `examples directory <https://github.com/cvec_circus-tent/cvec_circus/tree/master/examples>`_ in
 the Circus  repository contains many examples to get you started, but here's
 a full tutorial that gives you an overview of the features.
 
@@ -21,13 +21,13 @@ On Debian-based systems::
 
     $ sudo apt-get install libzmq-dev libevent-dev python-dev python-virtualenv
 
-Create a virtualenv and install *circus*, *circus-web* and *chaussette*
+Create a virtualenv and install *cvec_circus*, *cvec_circus-web* and *chaussette*
 in it ::
 
-    $ virtualenv /tmp/circus
-    $ cd /tmp/circus
-    $ bin/pip install circus
-    $ bin/pip install circus-web
+    $ virtualenv /tmp/cvec_circus
+    $ cd /tmp/cvec_circus
+    $ bin/pip install cvec_circus
+    $ bin/pip install cvec_circus-web
     $ bin/pip install chaussette
 
 Once this is done, you'll find a plethora of commands in the local bin dir.
@@ -41,16 +41,16 @@ Usage
 
 You should be able to visit http://localhost:8080 and see *hello world*.
 
-Stop Chaussette and add a circus.ini file in the directory containing:
+Stop Chaussette and add a cvec_circus.ini file in the directory containing:
 
 .. code-block:: ini
 
-    [circus]
+    [cvec_circus]
     statsd = 1
     httpd = 1
 
     [watcher:webapp]
-    cmd = bin/chaussette --fd $(circus.sockets.web)
+    cmd = bin/chaussette --fd $(cvec_circus.sockets.web)
     numprocesses = 3
     use_sockets = True
 
@@ -63,9 +63,9 @@ This config file tells Circus to bind a socket on port *9999* and run
 3 chaussettes workers against it. It also activates the Circus web
 dashboard and the statistics module.
 
-Save it & run it using **circusd**::
+Save it & run it using **cvec_circusd**::
 
-    $ bin/circusd --daemon circus.ini
+    $ bin/cvec_circusd --daemon cvec_circus.ini
 
 Now visit http://127.0.0.1:9999, you should see the hello world app. The
 difference now is that the socket is managed by Circus and there are
@@ -83,18 +83,18 @@ You can also visit http://localhost:8080/ and enjoy the Circus web dashboard.
 Interaction
 -----------
 
-Let's use the circusctl shell while the system is running::
+Let's use the cvec_circusctl shell while the system is running::
 
-    $ bin/circusctl
-    circusctl 0.7.1
-    circusd-stats: active
-    circushttpd: active
+    $ bin/cvec_circusctl
+    cvec_circusctl 0.7.1
+    cvec_circusd-stats: active
+    cvec_circushttpd: active
     webapp: active
-    (circusctl)
+    (cvec_circusctl)
 
 You get into an interactive shell. Type **help** to get all commands::
 
-    (circusctl) help
+    (cvec_circusctl) help
 
     Documented commands (type help <topic>):
     ========================================
@@ -110,25 +110,25 @@ You get into an interactive shell. Type **help** to get all commands::
 Let's try basic things. Let's list the web workers processes and add a
 new one::
 
-    (circusctl) list webapp
+    (cvec_circusctl) list webapp
     13712,13713,13714
-    (circusctl) incr webapp
+    (cvec_circusctl) incr webapp
     4
-    (circusctl) list webapp
+    (cvec_circusctl) list webapp
     13712,13713,13714,13973
 
 
 Congrats, you've interacted with your Circus! Get off the shell
-with Ctrl+D and now run circus-top::
+with Ctrl+D and now run cvec_circus-top::
 
-    $ bin/circus-top
+    $ bin/cvec_circus-top
 
 This is a top-like command to watch all your processes' memory and CPU
 usage in real time.
 
-Hit Ctrl+C and now let's quit Circus completely via circus-ctl::
+Hit Ctrl+C and now let's quit Circus completely via cvec_circus-ctl::
 
-    $ bin/circusctl quit
+    $ bin/cvec_circusctl quit
     ok
 
 

@@ -3,10 +3,10 @@
 CLI tools
 #########
 
-circus-top
+cvec_circus-top
 ==========
 
-*circus-top* is a top-like console you can run to watch
+*cvec_circus-top* is a top-like console you can run to watch
 live your running Circus system. It will display the CPU, Memory
 usage and socket hits if you have some.
 
@@ -14,7 +14,7 @@ usage and socket hits if you have some.
 Example of output::
 
     -----------------------------------------------------------------------
-    circusd-stats
+    cvec_circusd-stats
      PID                 CPU (%)             MEMORY (%)
     14252                 0.8                 0.4
                           0.8 (avg)           0.4 (sum)
@@ -32,17 +32,17 @@ Example of output::
 
 
 
-*circus-top* is a read-only console. If you want to interact with the system, use
-*circusctl*.
+*cvec_circus-top* is a read-only console. If you want to interact with the system, use
+*cvec_circusctl*.
 
 
-circusctl
+cvec_circusctl
 =========
 
-*circusctl* can be used to run any command listed in :ref:`commands` . For
+*cvec_circusctl* can be used to run any command listed in :ref:`commands` . For
 example, you can get a list of all the watchers, you can do ::
 
-    $ circusctl list
+    $ cvec_circusctl list
 
 Besides supporting a handful of options you can also specify the endpoint
-*circusctl* should use using the ``CIRCUSCTL_ENDPOINT`` environment variable.
+*cvec_circusctl* should use using the ``CIRCUSCTL_ENDPOINT`` environment variable.

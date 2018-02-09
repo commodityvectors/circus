@@ -1,7 +1,7 @@
 [run]
-omit = *_patch*,circus/tests/*
-source = circus
-include = circus/*
+omit = *_patch*,cvec_circus/tests/*
+source = cvec_circus
+include = cvec_circus/*
 parallel = true
 
 [html]

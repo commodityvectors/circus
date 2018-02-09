@@ -1,5 +1,5 @@
 
-from circus import get_arbiter
+from cvec_circus import get_arbiter
 
 myprogram = {"cmd": "sleep 30", "numprocesses": 4}
 

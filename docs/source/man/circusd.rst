@@ -1,18 +1,18 @@
-circusd man page
+cvec_circusd man page
 ################
 
 Synopsis
 --------
 
-circusd [options] [config]
+cvec_circusd [options] [config]
 
 
 Description
 -----------
 
-circusd is the main process of the Circus architecture. It takes care of
+cvec_circusd is the main process of the Circus architecture. It takes care of
 running all the processes. Each process managed by Circus is a child
-process of **circusd**.
+process of **cvec_circusd**.
 
 
 Arguments
@@ -42,7 +42,7 @@ Options
    configuration for the arbiter.
 
 :\--daemon:
-   Start circusd in the background.
+   Start cvec_circusd in the background.
 
 :\--pidfile *PIDFILE*:
    The location of the PID file.
@@ -54,6 +54,6 @@ Options
 See also
 --------
 
-`circus` (1), `circusctl` (1), `circusd-stats` (1), `circus-plugin` (1), `circus-top` (1).
+`cvec_circus` (1), `cvec_circusctl` (1), `cvec_circusd-stats` (1), `cvec_circus-plugin` (1), `cvec_circus-top` (1).
 
-Full Documentation is available at https://circus.readthedocs.io
+Full Documentation is available at https://cvec_circus.readthedocs.io

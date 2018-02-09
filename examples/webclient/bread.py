@@ -9,7 +9,7 @@ from geventwebsocket.handler import WebSocketHandler
 import json
 import argparse
 
-from circus.consumer import CircusConsumer
+from cvec_circus.consumer import CircusConsumer
 from flask import Flask, request, render_template
 
 

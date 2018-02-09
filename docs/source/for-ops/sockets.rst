@@ -28,7 +28,7 @@ Design
 ======
 
 The gist of the feature is done by binding the socket and start listening
-to it in **circusd**:
+to it in **cvec_circusd**:
 
 .. code-block:: python
 
@@ -51,7 +51,7 @@ it could look like this:
     import socket
     import sys
 
-    fd = int(sys.argv[1])   # getting the FD from circus
+    fd = int(sys.argv[1])   # getting the FD from cvec_circus
     sock = socket.fromfd(fd, FAMILY, TYPE)
 
     # dealing with one request at a time
@@ -67,14 +67,14 @@ Then Circus could run like this:
 
 .. code-block:: ini
 
-    [circus]
+    [cvec_circus]
     check_delay = 5
     endpoint = tcp://127.0.0.1:5555
     pubsub_endpoint = tcp://127.0.0.1:5556
     stats_endpoint = tcp://127.0.0.1:5557
 
     [watcher:dummy]
-    cmd = mycoolscript $(circus.sockets.foo)
+    cmd = mycoolscript $(cvec_circus.sockets.foo)
     use_sockets = True
     warmup_delay = 0
     numprocesses = 5
@@ -83,7 +83,7 @@ Then Circus could run like this:
     host = 127.0.0.1
     port = 8888
 
-*$(circus.sockets.foo)* will be replaced by the FD value once the socket is
+*$(cvec_circus.sockets.foo)* will be replaced by the FD value once the socket is
 created and bound on the 8888 *port*.
 
 .. note::
@@ -91,7 +91,7 @@ created and bound on the 8888 *port*.
    Starting at Circus 0.8 there's an alternate syntax to avoid some
    conflicts with some config parsers. You can write::
 
-       ((circus.sockets.foo))
+       ((cvec_circus.sockets.foo))
 
 
 Real-world example
@@ -105,13 +105,13 @@ socket and calling the **chaussette** command in a worker, like this:
 
 .. code-block:: ini
 
-    [circus]
+    [cvec_circus]
     endpoint = tcp://127.0.0.1:5555
     pubsub_endpoint = tcp://127.0.0.1:5556
     stats_endpoint = tcp://127.0.0.1:5557
 
     [watcher:web]
-    cmd = chaussette --fd $(circus.sockets.web) --backend meinheld mycool.app
+    cmd = chaussette --fd $(cvec_circus.sockets.web) --backend meinheld mycool.app
     use_sockets = True
     numprocesses = 5
 

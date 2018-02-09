@@ -14,7 +14,7 @@ For example, if you want to run four processes forever, you could write:
 
 .. code-block:: python
 
-    from circus import get_arbiter
+    from cvec_circus import get_arbiter
 
     myprogram = {"cmd": "python myprogram.py", "numprocesses": 4}
 
@@ -34,7 +34,7 @@ Extending Circus
 ----------------
 
 It's easy to extend Circus to create a more complex system, by listening to all
-the **circusd** events via its pub/sub channel, and driving it via commands.
+the **cvec_circusd** events via its pub/sub channel, and driving it via commands.
 
 That's how the flapping feature works for instance: it listens to all the
 processes dying, measures how often it happens, and stops the incriminated

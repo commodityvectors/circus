@@ -1,18 +1,18 @@
-circusctl man page
+cvec_circusctl man page
 ##################
 
 Synopsis
 --------
 
-circusctl [options] command [args]
+cvec_circusctl [options] command [args]
 
 
 Description
 -----------
 
-circusctl is front end to control the Circus daemon. It is designed to
+cvec_circusctl is front end to control the Circus daemon. It is designed to
 help the administrator control the functionning of the Circud
-**circusd** daemon.
+**cvec_circusd** daemon.
 
 
 Commands
@@ -20,11 +20,11 @@ Commands
 
 :add: Add a watcher
 :decr: Decrement the number of processes in a watcher
-:dstats: Get circusd stats
+:dstats: Get cvec_circusd stats
 :get: Get the value of specific watcher options
 :globaloptions: Get the arbiter options
 :incr: Increment the number of processes in a watcher
-:ipython: Create shell into circusd process
+:ipython: Create shell into cvec_circusd process
 :list: Get list of watchers or processes in a watcher
 :listen: Subscribe to a watcher event
 :listsockets: Get the list of sockets
@@ -75,6 +75,6 @@ Options
 See Also
 --------
 
-`circus` (1), `circusd` (1), `circusd-stats` (1), `circus-plugin` (1), `circus-top` (1).
+`cvec_circus` (1), `cvec_circusd` (1), `cvec_circusd-stats` (1), `cvec_circus-plugin` (1), `cvec_circus-top` (1).
 
-Full Documentation is available at https://circus.readthedocs.io
+Full Documentation is available at https://cvec_circus.readthedocs.io

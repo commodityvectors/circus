@@ -1,6 +1,6 @@
 import sys
 from setuptools import setup, find_packages
-from circus import __version__
+from cvec_circus import __version__
 
 if not hasattr(sys, 'version_info') or sys.version_info < (2, 6, 0, 'final'):
     raise SystemExit("Circus requires Python 2.6 or higher.")
@@ -17,7 +17,7 @@ with open("README.rst") as f:
     README = f.read()
 
 
-setup(name='circus',
+setup(name='cvec_circus',
       version=__version__,
       packages=find_packages(exclude=["docs", "examples"]),
       description=("Circus is a program that will let you run and watch "
@@ -36,12 +36,12 @@ setup(name='circus',
           "License :: OSI Approved :: Apache Software License"
       ],
       install_requires=install_requires,
-      test_suite='circus.tests',
+      test_suite='cvec_circus.tests',
       entry_points="""
       [console_scripts]
-      circusd = circus.circusd:main
-      circusd-stats = circus.stats:main
-      circusctl = circus.circusctl:main
-      circus-top = circus.stats.client:main
-      circus-plugin = circus.plugins:main
+      cvec_circusd = cvec_circus.cvec_circusd:main
+      cvec_circusd-stats = cvec_circus.stats:main
+      cvec_circusctl = cvec_circus.cvec_circusctl:main
+      cvec_circus-top = cvec_circus.stats.client:main
+      cvec_circus-plugin = cvec_circus.plugins:main
       """)

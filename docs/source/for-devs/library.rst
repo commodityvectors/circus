@@ -16,18 +16,18 @@ The get_arbiter function
 ========================
 
 :func:`get_arbiter` is just a convenience on top of the various
-circus classes. It creates an :term:`arbiter` (class :class:`Arbiter`) instance
+cvec_circus classes. It creates an :term:`arbiter` (class :class:`Arbiter`) instance
 with the provided options, which in turn runs a single :class:`Watcher` with a
 single :class:`Process`.
 
 
-.. autofunction:: circus.get_arbiter
+.. autofunction:: cvec_circus.get_arbiter
 
 Example:
 
 .. code-block:: python
 
-   from circus import get_arbiter
+   from cvec_circus import get_arbiter
 
    arbiter = get_arbiter([{"cmd": "myprogram", "numprocesses": 3}])
    try:
@@ -51,7 +51,7 @@ manager:
 - :class:`Arbiter`: manages several :class:`Watcher` instances.
 
 
-.. autoclass:: circus.process.Process
+.. autoclass:: cvec_circus.process.Process
    :members: pid, stdout, stderr, send_signal, stop, age, info,
              children, is_child, send_signal_child, send_signal_children,
              status
@@ -59,7 +59,7 @@ manager:
 
 Example::
 
-    >>> from circus.process import Process
+    >>> from cvec_circus.process import Process
     >>> process = Process('Top', 'top', shell=True)
     >>> process.age()
     3.0107998847961426
@@ -74,11 +74,11 @@ Example::
     'No such process (stopped?)'
 
 
-.. autoclass:: circus.watcher.Watcher
+.. autoclass:: cvec_circus.watcher.Watcher
    :members: notify_event, reap_processes, manage_processes, reap_and_manage_processes,
              spawn_processes, spawn_process, kill_process,kill_processes, send_signal_child, stop,start,
              restart, reload, do_action
 
 
-.. autoclass:: circus.arbiter.Arbiter
+.. autoclass:: cvec_circus.arbiter.Arbiter
    :members: start, stop, reload, numprocesses, numwatchers, get_watcher, add_watcher

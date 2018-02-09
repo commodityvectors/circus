@@ -57,7 +57,7 @@ CURDIR = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(os.path.join(CURDIR, '..', '..'))
 sys.path.append(os.path.join(CURDIR, '..'))
 
-import circus
+import cvec_circus
 extensions = ['sphinx.ext.autodoc', 'circus_ext']
 
 
@@ -82,7 +82,7 @@ copyright = u''
 # built documents.
 #
 # The short X.Y version.
-release = version = circus.__version__
+release = version = cvec_circus.__version__
 
 # The full version, including alpha/beta/rc tags.
 
@@ -128,7 +128,7 @@ html_short_title = "Circus"
 html_theme_path = [os.path.dirname(mozilla_sphinx_theme.__file__)]
 html_theme = 'mozilla'
 
-#html_logo = "images/circus32.png"
+#html_logo = "images/cvec_circus32.png"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -260,17 +260,17 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'circus', u'Circus Documentation',
+    ('index', 'cvec_circus', u'Circus Documentation',
      [u'Mozilla Foundation', u'Benoit Chesneau'], 1),
-    ('man/circusd', 'circusd', u'the circus daemon',
+    ('man/cvec_circusd', 'cvec_circusd', u'the cvec_circus daemon',
      [u'David Douard'], 1),
-    ('man/circusctl', 'circusctl', u'circus daemon control insterface',
+    ('man/cvec_circusctl', 'cvec_circusctl', u'cvec_circus daemon control insterface',
      [u'David Douard'], 1),
-    ('man/circusd-stats', 'circusd-stats', u'circus daemon stats aggregator',
+    ('man/cvec_circusd-stats', 'cvec_circusd-stats', u'cvec_circus daemon stats aggregator',
      [u'David Douard'], 1),
-    ('man/circus-top', 'circus-top', u'display Circus processes',
+    ('man/cvec_circus-top', 'cvec_circus-top', u'display Circus processes',
      [u'David Douard'], 1),
-    ('man/circus-plugin', 'circus-plugin', u'execute a Circus plugin',
+    ('man/cvec_circus-plugin', 'cvec_circus-plugin', u'execute a Circus plugin',
      [u'David Douard'], 1),
 ]
 

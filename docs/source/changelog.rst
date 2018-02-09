@@ -77,10 +77,10 @@ Major changes/fixes:
 
 More changes:
 
-- circus messages can be routed to syslog now - #748
+- cvec_circus messages can be routed to syslog now - #748
 - endpoint_owner option added so we can define which user owns ipc socket
-  files created by circus.
-- Started Windows support (just circusctl for now)
+  files created by cvec_circus.
+- Started Windows support (just cvec_circusctl for now)
 - fixed a lot of leaks in the tests
 - Allow case sensitive environment variables
 - The resource plugin now accepts absolute memory values - #609
@@ -146,7 +146,7 @@ More changes:
 - Allow custom options for stdout_stream and stderr_stream.
 - Add new socket config option to bind to a specific interface by name
 - Add time_format for FileStream + tests
-- Update circus.upstart
+- Update cvec_circus.upstart
 
 
 0.9.2 - 2013-07-17
@@ -163,7 +163,7 @@ More changes:
 
 - added [env] sections wildcards
 - added global [env] secrtion
-- fixed hidden exception when circus-web is not installed - #424
+- fixed hidden exception when cvec_circus-web is not installed - #424
 - make sure incr/decr commands really us the nb option - #421
 - Fix watcher virtualenv site-packages not in PYTHONPATH
 - make sure we dont try to remove more processes than 0 - #429
@@ -172,11 +172,11 @@ More changes:
 - refactored socket close function
 - Ensure env sections are applied to all watchers - #437
 - added the reloadconfig command
-- added circus.green and removed gevent from the core - #441, #452
+- added cvec_circus.green and removed gevent from the core - #441, #452
 - silenced spurious stdout & warnings in the tests - #438
-- $(circus.env.*) can be used for all options in the config now
+- $(cvec_circus.env.*) can be used for all options in the config now
 - added a before_spawn hook
-- correct the path of circusd in systemd service file - #450
+- correct the path of cvec_circusd in systemd service file - #450
 - make sure we can change hooks and set streams via CLI - #455
 - improved doc
 - added a spawn_count stat in watcher
@@ -187,8 +187,8 @@ More changes:
 0.8.1 - 2013-05-28
 ------------------
 
-* circusd-stats was choking on unix sockets - #415
-* circusd-stats & circushttpd child processes stdout/stderr are now left open
+* cvec_circusd-stats was choking on unix sockets - #415
+* cvec_circusd-stats & cvec_circushttpd child processes stdout/stderr are now left open
   by default. Python <= 2.7.5 would choke in the logging module in case
   the 2/3 fds were closed - #415
 * Now redirecting to /dev/null in the child process instead of closing.
@@ -200,16 +200,16 @@ More changes:
 * Integrated log handlers into zmq io loop.
 * Make redirector restartable and subsequently more robust.
 * Uses zmq.green.eventloop when gevent is detected
-* Added support for CIRCUSCTL_ENDPOINT environment variable to circusctl - #396
+* Added support for CIRCUSCTL_ENDPOINT environment variable to cvec_circusctl - #396
 * util: fix bug in to_uid function - #397
 * Remove handler on ioloop error - #398.
 * Improved test coverage
 * Deprecated the 'service' option for the ResourceWatcher plugin - #404
 * removed psutil.error usage
-* Added UDP discovery in circusd - #407
+* Added UDP discovery in cvec_circusd - #407
 * Now allowing globs at arbitrary directory levels - #388
 * Added the 'statd' configuration option - #408
-* Add pidfile, logoutput and loglevel option to circus configuration file - #379
+* Add pidfile, logoutput and loglevel option to cvec_circus configuration file - #379
 * Added a tutorial in the docs.
 * make sure we're merging all sections when using include - #414
 * added pipe_stdout, pipe_stderr, close_child_stderr & close_child_stdout
@@ -235,15 +235,15 @@ More changes:
 * Add python buildout support
 * Removed the gevent and the thread redirectors. now using the ioloop - fixes
   #346. Relates #340
-* circus.web is now its own project
+* cvec_circus.web is now its own project
 * removed the pyzmq patching
 * Allow the watcher to be configured but not started #283
 * Add an option to load a virtualenv site dir
 * added on_demand watchers
 * added doc about nginx+websockets #371
 * now properly parsing the options list of each command #369
-* Fixed circusd-stats events handling #372
-* fixed the overflow issue in circus-top #378
+* Fixed cvec_circusd-stats events handling #372
+* fixed the overflow issue in cvec_circus-top #378
 * many more things...
 
 0.6 - 2012-12-18
@@ -252,7 +252,7 @@ More changes:
 
 * Patching protocols name for sockets - #248
 * Don't autoscale graphs. #240
-* circusctl: add per command help, from docstrings #217
+* cvec_circusctl: add per command help, from docstrings #217
 * Added workers hooks
 * Added Debian package - #227
 * Added Redis, HTTP Observer, Full stats & Resource plugins
@@ -276,17 +276,17 @@ More changes:
 
 * now patching the thread module from the stdlib
   to avoid some Python bugs - #203
-* better looking circusctl help screen
+* better looking cvec_circusctl help screen
 * uses pustil get_nice() when available (nice was deprecated) - #208
 * added max_age support - #221
 * only call listen() on SOCK_STREAM or SOCK_SEQPACKET sockets
 * make sure the controller empties the plugins list in update_watchers() - #220
-* added --log-level and --log-output to circushttpd
+* added --log-level and --log-output to cvec_circushttpd
 * fix the process killing via the web UI - #219
-* now circus is zc.buildout compatible for scripts.
+* now cvec_circus is zc.buildout compatible for scripts.
 * cleanup the websocket when the client disconnect - #225
 * fixed the default value for the endpoint - #199
-* splitted circushttpd in logical modules
+* splitted cvec_circushttpd in logical modules
 
 
 0.5.1 - 2012-07-11
@@ -312,7 +312,7 @@ More changes:
 * incr/decr commands now have an nbprocess parameter
 * Add a reproduce_env option to watchers
 * Add a new UNEXISTING status to the processes
-* Added the global *httpd* option to run circushttpd as a watcher
+* Added the global *httpd* option to run cvec_circushttpd as a watcher
 
 
 0.4 - 2012-06-12
@@ -320,13 +320,13 @@ More changes:
 
 * Added a plugin system
 * Added a "singleton" option for watchers
-* Fixed circus-top screen flickering
-* Removed threads from circus.stats in favor of zmq periodic callbacks
+* Fixed cvec_circus-top screen flickering
+* Removed threads from cvec_circus.stats in favor of zmq periodic callbacks
 * Enhanced the documentation
 * Circus client now have a send_message api
 * The flapping feature is now a plugin
 * Every command line tool have a --version option
-* Added a statsd plugin (sends the events from circus to statsd)
+* Added a statsd plugin (sends the events from cvec_circus to statsd)
 * The web UI now uses websockets (via socketio) to get the stats
 * The web UI now uses sessions for "flash messages" in the web ui
 
@@ -348,7 +348,7 @@ More changes:
 ------------------
 
 - allows optional args property to add_watcher command.
-- added circushttpd, circus-top and circusd-stats
+- added cvec_circushttpd, cvec_circus-top and cvec_circusd-stats
 - allowing Arbiter.add_watcher() to set all Watcher option
 - make sure the redirectors are re-created on restarts
 
@@ -378,11 +378,11 @@ More changes:
 - Fixed a couple of leaking file descriptors.
 - Fixed a core dump in the flapping
 - Doc improvments
-- Make sure circusd errors properly when another circusd
+- Make sure cvec_circusd errors properly when another cvec_circusd
   is running on the same socket.
 - get_arbiter now accepts several watchers.
 - Fixed the cmd vs args vs executable in the process init.
-- Fixed --start on circusctl add
+- Fixed --start on cvec_circusctl add
 
 
 0.1 - 2012-03-20

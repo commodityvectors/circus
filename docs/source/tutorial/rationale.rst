@@ -9,7 +9,7 @@ Why should I use Circus instead of X ?
    Circus knows how to manage processes *and* sockets, so you don't
    have to delegate web workers management to a WGSI server.
 
-   See :ref:`whycircussockets`
+   See :ref:`whycvec_circussockets`
 
 
 2. **Circus provides pub/sub and poll notifications via ZeroMQ**
@@ -38,7 +38,7 @@ Why should I use Circus instead of X ?
 3. **Circus is (Python) developer friendly**
 
   While Circus can be driven entirely by a config file and the
-  *circusctl* / *circusd* commands, it is easy to reuse all or part of
+  *cvec_circusctl* / *cvec_circusd* commands, it is easy to reuse all or part of
   the system to build your own custom process watcher in Python.
 
   Every layer of the system is isolated, so you can reuse independently:
@@ -70,7 +70,7 @@ Similarities overview
 ---------------------
 
 Supervisor & Circus have the same goals - they both manage processes and
-provide a command-line script — respectively **supervisord** and **circusd** —
+provide a command-line script — respectively **supervisord** and **cvec_circusd** —
 that reads a configuration file, forks new processes and keep them alive.
 
 Circus & Supervisor both have the ability to bind sockets and
@@ -80,10 +80,10 @@ by many web servers out there, like `Apache <https://httpd.apache.org/>`_ or
 manager can simplify a web app stack: all processes and sockets are managed
 by a single tool. For Python, `Chaussette <https://chaussette.readthedocs.io/>`_
 allows WSGI severs to use the already-opened sockets provided by the socket
-managers in both **circusd** and **supervisord**.
+managers in both **cvec_circusd** and **supervisord**.
 
 Both projects provide a way to control a running daemon via another script.
-respectively **supervisorctl** and **circusctl**. They also both have
+respectively **supervisorctl** and **cvec_circusctl**. They also both have
 events and a way to subscribe to them. The main difference is the
 underlying technology: Supervisor uses XML-RPC for interacting with
 the daemon, while Circus uses ZeroMQ.
@@ -91,10 +91,10 @@ the daemon, while Circus uses ZeroMQ.
 Circus & Supervisor both have a web interface to display what's going
 on. Circus' is more advanced because you can follow in real time what's
 going on and interact with the daemon. It uses web sockets and is developed
-in a separate project (`circus-web <https://github.com/circus-tent/circus-web>`_.)
+in a separate project (`cvec_circus-web <https://github.com/cvec_circus-tent/cvec_circus-web>`_.)
 
 There are many other subtle differences in the core design, we
-might list here one day… In the meantime, you can learn more about circus
+might list here one day… In the meantime, you can learn more about cvec_circus
 internals in :ref:`design`.
 
 
@@ -104,7 +104,7 @@ Configuration
 Both systems use an ini-like file as a configuration.
 
 - `Supervisor documentation <http://supervisord.org/configuration.html>`_
-- `Circus documentation <https://circus.readthedocs.io/en/latest/for-ops/configuration/>`_
+- `Circus documentation <https://cvec_circus.readthedocs.io/en/latest/for-ops/configuration/>`_
 
 Here's a small example of running an application with Supervisor. In this
 case, the application will be started and restarted in case it crashes ::

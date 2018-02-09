@@ -9,10 +9,10 @@ Statsd
 ======
 
     **use**
-        set to 'circus.plugins.statsd.StatsdEmitter'
+        set to 'cvec_circus.plugins.statsd.StatsdEmitter'
 
     **application_name**
-        the name used to identify the bucket prefix to emit the stats to (it will be prefixed with ``circus.`` and suffixed with ``.watcher``)
+        the name used to identify the bucket prefix to emit the stats to (it will be prefixed with ``cvec_circus.`` and suffixed with ``.watcher``)
 
     **host**
         the host to post the statds data to
@@ -31,7 +31,7 @@ FullStats
     such it has the same configuration options as Statsd and the following.
 
     **use**
-        set to ``circus.plugins.statsd.FullStats``
+        set to ``cvec_circus.plugins.statsd.FullStats``
 
     **loop_rate**
         the frequency the plugin should ask for the stats in seconds. Default: 60.
@@ -47,7 +47,7 @@ RedisObserver
     It has the same configuration as statsd and adds the following:
 
     **use**
-        set to   ``circus.plugins.redis_observer.RedisObserver``
+        set to   ``cvec_circus.plugins.redis_observer.RedisObserver``
 
     **loop_rate**
         the frequency the plugin should ask for the stats in seconds. Default: 60.
@@ -73,7 +73,7 @@ HttpObserver
     It has the same configuration as statsd and adds the following:
 
     **use**
-        set to ``circus.plugins.http_observer.HttpObserver``
+        set to ``cvec_circus.plugins.http_observer.HttpObserver``
 
     **loop_rate**
         the frequency the plugin should ask for the stats in seconds. Default: 60.
@@ -98,7 +98,7 @@ ResourceWatcher
     It has the same configuration as statsd and adds the following:
 
     **use**
-        set to ``circus.plugins.resource_watcher.ResourceWatcher``
+        set to ``cvec_circus.plugins.resource_watcher.ResourceWatcher``
 
     **loop_rate**
         the frequency the plugin should ask for the stats in seconds. Default: 60.
@@ -136,14 +136,14 @@ Example:
 
 .. code-block:: ini
 
-    [circus]
+    [cvec_circus]
     ; ...
 
     [watcher:program]
     cmd = sleep 120
 
     [plugin:myplugin]
-    use = circus.plugins.resource_watcher.ResourceWatcher
+    use = cvec_circus.plugins.resource_watcher.ResourceWatcher
     watcher = program
     min_cpu = 10
     max_cpu = 70
@@ -156,7 +156,7 @@ Watchdog
     Plugin that binds an udp socket and wait for watchdog messages.
     For "watchdoged" processes, the watchdog will kill them if they
     don't send a heartbeat in a certain period of time materialized by
-    loop_rate * max_count. (circus will automatically restart the missing
+    loop_rate * max_count. (cvec_circus will automatically restart the missing
     processes in the watcher)
 
     Each monitored process should send udp message at least at the loop_rate.
@@ -172,7 +172,7 @@ Watchdog
     Configuration parameters:
 
     **use**
-      set to ``circus.plugins.watchdog.WatchDog``
+      set to ``cvec_circus.plugins.watchdog.WatchDog``
 
     **loop_rate**
         watchdog loop rate in seconds. At each loop, WatchDog
@@ -208,7 +208,7 @@ Flapping
     properly.
 
     **use**
-      set to ``circus.plugins.flapping.Flapping``
+      set to ``cvec_circus.plugins.flapping.Flapping``
     **attempts**
       the number of times a process can restart, within **window** seconds,
       before we consider it flapping (default: 2)
@@ -242,7 +242,7 @@ prefix. For instance, here is how you would configure a specific ``max_retry`` v
         ; ... other watchers
 
         [plugin:flapping]
-        use = circus.plugins.flapping.Flapping
+        use = cvec_circus.plugins.flapping.Flapping
         max_retry = 5
 
 
@@ -255,6 +255,6 @@ CommandReloader
     developing worker processes or even for hot code upgrade in production.
 
     **use**
-      set to ``circus.plugins.command_reloader.CommandReloader``
+      set to ``cvec_circus.plugins.command_reloader.CommandReloader``
     **loop_rate**
       the frequency the plugin should check for modification in seconds. Default: 1.
